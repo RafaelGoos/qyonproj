@@ -28,5 +28,5 @@ Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api')
 // Rotas protegidas por autenticação JWT
 Route::middleware(['auth:api'])->group(function () {
     // Rota para listar usuários
-    Route::get('users', 'UserController@index');
+    Route::get('users', [UserController::class, 'index']);
 });
