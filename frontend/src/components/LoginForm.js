@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logo from "../images/logoqyon.png";
+import './LoginForm.css';
+
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,26 +28,34 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+    <div className="login-container">
+      <div className="login-card">
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
         />
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <button type="submit">Entrar</button>
+        </form>
       </div>
-      <div>
-        <label>Senha</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
-      {error && <p>{error}</p>}
-      <button type="submit">Entrar</button>
-    </form>
+    </div>
   );
 };
 

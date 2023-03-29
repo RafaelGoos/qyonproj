@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logo from "../images/logoqyon.png";
+import './RegisterForm.css';
+
 function RegisterForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -27,25 +32,45 @@ function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-      </label>
-      <label>
-        Email:
-        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-      </label>
-      <label>
-        Password:
-        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-      </label>
-      <label>
-        Confirm Password:
-        <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} required />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <div className="card">
+      <div className="card-content">
+        <div className="left-content">
+          <figure>
+            <img src={logo}/>
+          </figure>
+        </div>
+        <div className="right-content">
+          <form onSubmit={handleSubmit}>
+            <h2 className="form-title">Cadastre-se</h2>
+            <label className="input-icon">
+              <div className="input-container">
+                <FontAwesomeIcon icon={faUser} className="fa-icon" />
+                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Nome" className="styled-input" required />
+              </div>
+            </label>
+            <label className="input-icon">
+              <div className="input-container">
+                <FontAwesomeIcon icon={faEnvelope} className="fa-icon" />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className="styled-input" required />
+              </div>
+            </label>
+            <label className="input-icon">
+              <div className="input-container">
+                <FontAwesomeIcon icon={faLock} className="fa-icon" />
+                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Senha" className="styled-input" required />
+              </div>
+            </label>
+            <label className="input-icon">
+              <div className="input-container">
+                <FontAwesomeIcon icon={faLock} className="fa-icon" />
+                <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} placeholder="Confirme a senha" className="styled-input" required />
+              </div>
+            </label>
+            <button type="submit" className="register-button">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
 
